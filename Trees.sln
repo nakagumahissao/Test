@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trees", "Trees\Trees.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nunit3TreeTest", "Nunit3TreeTest\Nunit3TreeTest.csproj", "{98F1C3A1-72E2-4058-93B3-1F6D6AD11BBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfReserveAPI", "ProofOfReserveAPI\ProofOfReserveAPI.csproj", "{29A8C63F-0B7B-B9BB-2288-34EF037FED86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{98F1C3A1-72E2-4058-93B3-1F6D6AD11BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98F1C3A1-72E2-4058-93B3-1F6D6AD11BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98F1C3A1-72E2-4058-93B3-1F6D6AD11BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A8C63F-0B7B-B9BB-2288-34EF037FED86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A8C63F-0B7B-B9BB-2288-34EF037FED86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A8C63F-0B7B-B9BB-2288-34EF037FED86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A8C63F-0B7B-B9BB-2288-34EF037FED86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
