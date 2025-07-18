@@ -21,7 +21,7 @@ namespace Nunit3TreeTest
             var dataBlocks = new List<string>(_args);
 
             // Act
-            var tree = new MerkleTree(dataBlocks);
+            var tree = new MerkleTree(dataBlocks, "Bitcoin_Transaction", "Bitcoin_Transaction");
             var rootHash = tree.GetMerkleRoot();
 
             // Assert

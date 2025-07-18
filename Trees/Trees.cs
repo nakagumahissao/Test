@@ -18,14 +18,14 @@
         public bool IsLeaf => Left == null && Right == null;
 
         // Leaf node constructor
-        public MerkleNode(string data)
+        public MerkleNode(string data, string strTagLeafValue)
         {
             Data = data;
-            Hash = TaggedHash(Trees.Properties.Resources.TagLeaf, Encoding.UTF8.GetBytes(data));
+            Hash = TaggedHash(strTagLeafValue, Encoding.UTF8.GetBytes(data));
         }
 
         // Internal node constructor
-        public MerkleNode(MerkleNode left, MerkleNode right)
+        public MerkleNode(MerkleNode left, MerkleNode right, string strTagBranchValue)
         {
             Left = left;
             Right = right;
@@ -50,7 +50,7 @@
             Buffer.BlockCopy(leftHashBytes, 0, combined, 0, leftHashBytes.Length);
             Buffer.BlockCopy(rightHashBytes, 0, combined, leftHashBytes.Length, rightHashBytes.Length);
 
-            Hash = TaggedHash(Trees.Properties.Resources.TagBranch, combined);
+            Hash = TaggedHash(strTagBranchValue, combined);
         }
 
         private static string TaggedHash(string tag, byte[] message)
@@ -90,8 +90,13 @@
         public MerkleNode? Root { get; private set; }
         public List<MerkleNode> Leaves { get; private set; } = new();
 
-        public MerkleTree(List<string> dataBlocks)
+        private string tagLeafValue = "";
+        private string tagBranchValue = "";
+
+        public MerkleTree(List<string> dataBlocks, string tagLeafValue, string tagBranchValue)
         {
+            this.tagLeafValue = tagLeafValue;
+            this.tagBranchValue = tagBranchValue;
             BuildTree(dataBlocks);
         }
 
@@ -104,7 +109,7 @@
             var currentLevel = new List<MerkleNode>();
             foreach (var data in dataBlocks)
             {
-                var leaf = new MerkleNode(data);
+                var leaf = new MerkleNode(data, tagLeafValue);
                 currentLevel.Add(leaf);
                 Leaves.Add(leaf);
             }
@@ -127,7 +132,7 @@
                             right = left;
                         }
 
-                        var parent = new MerkleNode(left, right);
+                        var parent = new MerkleNode(left, right, tagBranchValue);
                         nextLevel.Add(parent);
                     }
 
